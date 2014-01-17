@@ -1,6 +1,6 @@
 ---
 ---
-[
+phploep_jsonp_callback([
 {% for package in site.data.packages -%}  {
     "name": "{{ package.name }}",
     "repo": "{{ package.repo }}",
@@ -10,4 +10,4 @@
       "username": "{{ package.author.username }}"
     }
   }{% unless forloop.last %},{% endunless %}
-{% endfor %}]
+{% endfor %}])

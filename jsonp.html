@@ -1,0 +1,39 @@
+---
+title: The League of Extraordinary Packages
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="The League of Extraordinary Packages has one driving mission, to track down and develop PHP packages of the highest quality possible, using modern tools, standards and practices to distribute, test and strengthen the code.">
+    <meta property="og:title" content="The League of Extraordinary Packages" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://thephpleague.com" />
+    <meta property="og:image" content="http://thephpleague.com/img/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="package-list">loading..</div>
+<script>
+var phploep_jsonp_callback = function (packages) {
+    var packagesContainer = document.getElementById('package-list');
+    packagesContainer.innerHTML = '';
+    for (var i in packages) {
+        var p = packages[i];
+        var node = document.createElement('div');
+        node.innerHTML = '<b>' + p.name + '</b>: ' + p.description + '(by <a href="https://github.com/' + p.author.username + '">' + p.author.name + '</a>)';
+        packagesContainer.appendChild(node);
+    }
+};
+var s = document.createElement('script');
+s.src = '/js/packages.js';
+s.async = true;
+document.getElementsByTagName('head')[0].appendChild(s);
+console.log(s);
+</script>
+
+</body>
+</html>
